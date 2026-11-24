@@ -1,0 +1,20 @@
+paths:
+  train_raw: data/raw/train.csv
+  later_raw: data/raw/later.csv
+  holdout: data/raw/holdout_features.csv
+  train_clean: data/processed/train_clean.csv
+
+cleaning:
+  # unit mixup: this hostel recorded plate_size_cm in mm instead of cm
+  unit_column: plate_size_cm
+  unit_group_column: hostel
+  unit_group_value: "Boys Hostel 1"
+  unit_factor: 10
+  # target typos: waste_kg typed 10 times too big
+  target: waste_kg
+  typo_threshold: 100
+  typo_factor: 10
+  # stuck sensor: attendance_pct frozen on one value
+  stuck_column: attendance_pct
+  stuck_start: "2026-03-02"
+  stuck_end: "2026-03-18"
