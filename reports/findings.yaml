@@ -6,42 +6,40 @@ group_id: "G122"          # your group id, e.g. "G042"
 problem_id: "MP115"
 
 data_issues:
-  # For each of the 7 kinds: present: true or false.
-  # If present is false, leave the other values as null.
   leaking_column:
-    present: null
-    column: null           # the column that must not be used as a feature
+    present: false
+    column: null
   unit_mixup:
-    present: null
-    column: null           # the column recorded in a different unit
-    group_value: null      # the value of hostel whose rows are affected
-    factor: null           # wrong value = right value x factor
+    present: true
+    column: plate_size_cm
+    group_value: "Boys Hostel 1"
+    factor: 10
   sentinel_value:
-    present: null
+    present: false
     column: null
-    value: null            # the special number typed instead of a blank
-    count: null            # how many rows have it
+    value: null
+    count: null
   duplicate_rows:
-    present: null
-    count: null            # number of EXTRA copies (rows you would delete)
+    present: true
+    count: 60
   stuck_sensor:
-    present: null
-    column: null
-    start_date: null       # first date with the stuck value, YYYY-MM-DD
-    end_date: null         # last date with the stuck value, YYYY-MM-DD
+    present: true
+    column: attendance_pct
+    start_date: "2026-03-02"
+    end_date: "2026-03-18"
   target_typos:
-    present: null
-    count: null            # rows whose target was typed 10 times too big
+    present: true
+    count: 15
   spelling_variants:
-    present: null
+    present: false
     column: null
-    true_levels: null      # how many real categories there are after cleaning
-
+    true_levels: null
+    
 tracking:
-  experiment_name: null
-  best_run_id: null        # the MLflow run id of your v1 model
-  registered_model_name: null
-  champion_version: null
+  experiment_name: "mp115-waste"
+  best_run_id: "0ca16c8bc73647b0811bc88bd13380d2"  # the MLflow run id of your v1 model
+  registered_model_name: "mp115-waste-model"
+  champion_version: 1
 
 monitoring:
   psi:                     # cleaned train.csv vs later.csv, 10 bins

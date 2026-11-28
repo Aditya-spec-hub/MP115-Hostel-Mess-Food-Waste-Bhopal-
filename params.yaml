@@ -18,3 +18,16 @@ cleaning:
   stuck_column: attendance_pct
   stuck_start: "2026-03-02"
   stuck_end: "2026-03-18"
+
+model:
+  numeric_features: [students_registered, attendance_pct, menu_rating, temp_c, cooked_kg, plate_size_cm]
+  categorical_features: [meal, hostel]
+  target: waste_kg
+  experiment_name: mp115-waste
+  registered_model_name: mp115-waste-model
+  model_path: models/model.joblib
+  valid_fraction: 0.2
+  runs:
+    - {name: ridge, type: ridge, alpha: 1.0}
+    - {name: random_forest, type: random_forest, n_estimators: 100, max_depth: 8}
+    - {name: gradient_boosting, type: gradient_boosting, n_estimators: 200, learning_rate: 0.05, max_depth: 3}

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mp115-svc
+spec:
+  selector:
+    app: mp115-api
+  ports:
+    - port: 80
+      targetPort: 8000
